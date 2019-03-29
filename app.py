@@ -3,8 +3,8 @@ from sqlalchemy import *
 from sqlalchemy.orm import *
 from flask_sqlalchemy import *
 import os
-from db import li 
-from db import app
+from db import *
+
 #===========================================================================
 
 @app.route('/<value>', methods=['GET'])
