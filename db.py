@@ -15,3 +15,5 @@ class li(db.Model):
 
     def __repr__(self):
         return f"<li('{self.db_id}', '{self.db_input}', '{self.db_output}')>"
+
+db.create_all()
