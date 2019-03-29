@@ -4,18 +4,20 @@ from sqlalchemy.orm import *
 from flask_sqlalchemy import *
 import os
 import db
-from db import User 
+from db import li 
 from db import app
 #===========================================================================
 
 @app.route('/<value>', methods=['GET'])
 def find(value):
-    que = User.query.filter_by(output=value).first()
-    if que is None:
+    quea = li.query.filter_by(db_output=value).first()
+    if quea is None:
+        print("NONE")
         return render_template('index.html')
 
     else:
-        return redirect(que.input, code=302)
+        print("YES")
+        return redirect(quea.input, code=302)
 
 
 @app.route('/', methods=['GET'])

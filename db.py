@@ -2,13 +2,16 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'key'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
 db = SQLAlchemy(app)
 
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    input = db.Column(db.String(80), unique=True, nullable=False)
-    output = db.Column(db.String(120), unique=True, nullable=False)
+class li(db.Model):
+    __table_name__ = 'li'
+    db_id = db.Column(db.Integer, primary_key=True)
+    db_input = db.Column(db.String(80), unique=True, nullable=False)
+    db_output = db.Column(db.String(120), unique=True, nullable=False)
 
     def __repr__(self):
-        return '<User %r>' % self.username
+        return f"<li('{self.db_id}', '{self.db_input}', '{self.db_output}')>"
